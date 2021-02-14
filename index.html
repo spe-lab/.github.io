@@ -15,13 +15,19 @@ height:175px;
 color:DeepPink;
 }
 	  </style>
+	  
+	  
+
+
+	  
+	  
    </head>
    
    
 
    
 <body style="background-color:Pink" >
-<h1 class="title">Hello Eva :)</h1>
+<h1 class="title">Hello, Eva :) Today is <span id="datetime"></span>. Your birthday is in <span id="bday"></span> days.</h1>
 <h2 class="title">Fairytales</h2>
 
 <a href="https://www.bbc.co.uk/cbeebies/radio/the-three-little-pigs"><img alt="" src="3littlepigs.PNG" class="img"></a>
@@ -132,6 +138,17 @@ color:DeepPink;
 <iframe class="img" src="https://www.youtube.com/embed/videoseries?list=PLBHoF5Gf975C93AIgqd9sufMtG1fR3BWb" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
-
+<script>
+const d = new Date();
+const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
+const mo = new Intl.DateTimeFormat('en', { month: 'long' }).format(d);
+const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d);
+const dw = new Intl.DateTimeFormat('en', { weekday: 'long' }).format(d);
+const birthday = new Date(2021, 7, 11);
+var diff = Math.abs(birthday-d);
+var days = diff/(1000 * 3600 * 24)
+document.getElementById("datetime").innerHTML = (dw + ", " + da + " " + mo + " " + ye);
+document.getElementById("bday").innerHTML = Math.trunc(days);
+</script>
 </body>
 </html>
